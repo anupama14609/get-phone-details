@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Pyscript Tags Analyzer{% endblock title %}
+
+{% block active %} active{% endblock active %}
+
+{% block content %}
+<div class="col-md-8 p-4 text-white">       
+    <h4 class="fst-italic">Track Your Client IP Address - Live Updated</h4>
+   
+    <hr class="bg-light">
+    <h1 class="display-4 fst-italic">Enter Your Phone Number</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="phone"></label>
+            <input type="text" class="form-control" id="phone" name='phone' value="{{request.GET.city}}" placeholder="Phone Number...........">
+        </div>
+        <button type="submit" class="btn btn-primary">Get Result</button>
+    </form> 
+    
+ 
+    {% if result %}
+    <div class="jumbotron my-4 text-dark">
+        <ul class="list-group">
+            <li class="list-group-item">Info: <strong>{{result.cc}}</strong></li>
+            <li class="list-group-item">Operator: <strong>{{result.operator}}</strong></li>
+            <li class="list-group-item">Country: <strong>{{result.country}}</strong></li>
+            <li class="list-group-item">Validity: <strong>{{result.message}}</strong> 
+            </li>
+          </ul> 
+    </div>
+    {% endif %}
+ 
+ </div>
+{% endblock content %}
+
